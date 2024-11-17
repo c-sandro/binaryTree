@@ -4,8 +4,8 @@ public class BinaryTree{
 
     private Node head;
 
-    public BinaryTree(int value){
-        addNode(value);
+    public BinaryTree(){
+        this.head = null;
     }
 
     public void addNode(int value){

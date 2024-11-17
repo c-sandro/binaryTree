@@ -4,14 +4,22 @@ public class AVLTree extends BinaryTree{
 
     private Node imbalanced;
 
-    public AVLTree(int value){
-        super(value);
+    public AVLTree(){
+        super();
         this.imbalanced = null;
     }
 
     @Override
     public void addNode(int value){
         super.addNode(value);
+        if(!this.checkBalance(this.getHead())){
+            this.balanceTree(value);
+        }
+    }
+
+    @Override
+    public void removeNode(int value){
+        super.removeNode(value);
         if(!this.checkBalance(this.getHead())){
             this.balanceTree(value);
         }
@@ -34,8 +42,7 @@ public class AVLTree extends BinaryTree{
         return Math.abs(lh - rh) <= 1 && checkBalance(current.getLeftPrev()) && checkBalance(current.getRightPrev());
     }
 
-    public int getHeight(Node current)
-    {
+    public int getHeight(Node current){
         if (current == null){
             return 0;
         }
